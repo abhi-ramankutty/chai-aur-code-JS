@@ -11,7 +11,7 @@ accountCity = "Kottayam";
 
 /**
  * Prefer not to use var
- * Becase, 1. var has global scope and 2. var can be redeclared.
+ * Because, 1. var has global scope and 2. var can be redeclared.
  */
 
 console.table([accountId, accountEmail, accountPassword, accountCity, accountState])
