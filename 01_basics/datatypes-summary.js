@@ -52,3 +52,18 @@ console.log(typeof myFunction);
 // return type of typeof function is a function, called as function object
 
 // https://262.ecma-international.org/5.1/#sec-11.4.3
+
+// ***************************
+
+/**
+ * Summary in memory,
+ * 
+ * All the primitive datatypes are in stack
+ *  when you call the variable, a copy / value of the original is what you get
+ * 
+ * All non-primitive datatypes are in heap
+ *  when you call the variable, reference point to the data is what you get. 
+ */
+
+
+
