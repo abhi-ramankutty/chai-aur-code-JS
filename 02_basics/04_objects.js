@@ -48,5 +48,22 @@ const users = [
 // console.log(users[1]);
 // console.log(Object.keys(regUser));
 // console.log(Object.values(regUser));
-console.log(Object.entries(regUser));
-console.log(user.hasOwnProperty("id"))
+// console.log(Object.entries(regUser));
+// console.log(user.hasOwnProperty("id"));
+
+const course = {
+  name: "JS in hindi",
+  price: 123,
+  instructor: "Hitesh",
+};
+
+
+// Destructuring
+const { instructor: ins } = course;
+console.log(ins)
+
+// JSON -  JavaScript Object Notation
+// {
+//     a: "as",
+//     b: "df"
+// }
