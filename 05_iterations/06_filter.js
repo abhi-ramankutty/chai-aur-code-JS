@@ -1,3 +1,7 @@
+/**
+ * array.filter will return an empty array if no condition is satisfied
+ */
+
 const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const values = myNumbers.filter((num) => num > 4);
