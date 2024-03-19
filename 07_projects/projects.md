@@ -136,3 +136,60 @@ function startOverGame() {
   form.subt.removeAttribute('disabled');
 }
 ```
+
+## Project 5
+``` javascript
+const insert = document.querySelector('#insert');
+
+window.addEventListener('keydown', (event) => {
+  insert.innerHTML = `
+    <div class='color'>
+      <table>
+        <tr>
+          <th>Key</th>
+          <th>Keycode</th> 
+          <th>Code</th>
+        </tr>
+        <tr>
+          <td>${event.key === ' ' ? 'Space' : event.key}</td>
+          <td>${event.keyCode}</td> 
+          <td>${event.code}</td>
+        </tr>
+      </table>
+    </div>
+  `;
+});
+```
+
+## Project 6
+``` javascript
+let intervalRef;
+
+const generateColor = () => {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    const index = Math.floor(Math.random() * 16)
+    color += hex[index]
+  }
+  return color;
+}
+
+const stopChangingColor = () => {
+  clearInterval(intervalRef);
+  intervalRef = null;
+}
+const startChangingColor = () => {
+  const changeBgColor = () => {
+    document.body.style.backgroundColor = generateColor();
+  }
+
+  if (!intervalRef) {
+    intervalRef = setInterval(changeBgColor, 1000)
+  }
+}
+
+document.querySelector('#start').addEventListener('click', startChangingColor)
+
+document.querySelector('#stop').addEventListener('click', stopChangingColor)
+```
