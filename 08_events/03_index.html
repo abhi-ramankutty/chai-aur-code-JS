@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - 2 Projects</title>
+</head>
+
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+</body>
+<script>
+    const sayMyName = (str) => {
+        console.log(str, "Abhilash")
+    }
+    let intervalRef;
+    document.querySelector('#start').addEventListener('click', () => {
+        intervalRef = setInterval(sayMyName, 2000, 'Hi');
+    })
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(intervalRef)
+    })
+
+
+</script>
+
+</html>

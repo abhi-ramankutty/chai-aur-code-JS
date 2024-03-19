@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - 2 Projects</title>
+</head>
+
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+
+</body>
+<script>
+    const sayMyName = () => {
+        console.log("Abhilash")
+    }
+    const changeTitle = () => {
+        document.querySelector('h1').innerHTML = 'Best JS Series';
+    }
+    const timeOutRef = setTimeout(changeTitle, 2000);
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        console.log('Stop');
+        clearTimeout(timeOutRef);
+    })
+</script>
+
+</html>
