@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code - API</title>
+</head>
+
+<body style="background-color: #212121; color: #fff">
+
+</body>
+
+<script>
+    const apiUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const xml = new XMLHttpRequest();
+
+    function createCard(name, image, followers) {
+        const wrapperDiv = document.createElement('div');
+        const div = document.createElement('div');
+        const nameDiv = document.createElement('div');
+        const followersDiv = document.createElement('div');
+        const img = document.createElement('img');
+
+        wrapperDiv.setAttribute('style', 'display: flex; justify-content: center;');
+
+        div.setAttribute('style', 'width: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;')
+
+        img.setAttribute('src', image);
+        img.setAttribute('height', '150px')
+        img.setAttribute('width', '150px')
+        img.setAttribute('style', "border-radius: 50%")
+
+        nameDiv.innerHTML = name;
+        
+        followersDiv.innerHTML = `Followers: ${followers}`;
+
+        
+        div.append(img)
+        div.append(nameDiv)
+        div.append(followersDiv)
+
+        wrapperDiv.append(div)
+
+        document.body.append(wrapperDiv)
+    }
+
+
+    xml.open('GET', apiUrl);
+    xml.onreadystatechange = function() {
+        if (xml.readyState === 4) {
+            const response = JSON.parse(this.responseText);
+            const name = response.name;
+            const img = response.avatar_url;
+            const followers = response.followers;
+            createCard(name, img, followers)
+        }
+    }
+    xml.send();
+
+</script>
+
+</html>
