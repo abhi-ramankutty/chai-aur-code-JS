@@ -20,3 +20,4 @@ const userObj = {
 console.log(userObj.name);
 console.log(userObj.password);
 console.log(userObj._password);
+

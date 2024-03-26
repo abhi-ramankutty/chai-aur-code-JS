@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+
+<body style="background-color:#212121">
+    <button id="orange">Organge</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    // function init() {
+    //     let name = "Mozilla";
+
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    // console.log('----------------');
+
+    // function outer() {
+    //     let username = 'Shinigami';
+    //     function inner() {
+    //         console.log("Inner :", username)
+    //     }
+
+    //     inner()
+    // }
+    // outer();
+    // console.log("Tooo outer:", username)
+
+
+
+</script>
+<script>
+    // document.getElementById("orange").onclick = function () {
+    //     document.body.style.backgroundColor = `orange`
+    // }
+    // document.getElementById("green").onclick = function () {
+    //     document.body.style.backgroundColor = `green`
+    // }
+
+    function clickHandler(color) {
+        return function () {
+            document.body.style.backgroundColor = `${color}`
+        }
+    }
+    document.getElementById('orange').onclick = clickHandler('orange')
+    document.getElementById('green').onclick = clickHandler('green')
+</script>
+
+</html>
+
+<!--
+    Lexical scoping...
+    It means that properties of outer functions can be accessed by the inner functions
+    But, the vice-versa is not possible.. 
+-->
+
+<!--
+    Closure
+    When a function returns a function, the entire lexical-scope of the function (including the outer scope) is returned
+
+-->
