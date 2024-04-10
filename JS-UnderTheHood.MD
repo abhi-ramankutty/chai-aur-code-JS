@@ -35,3 +35,13 @@ first()
     2. Execution phase
         - Executes the code line-by-line one after the other
         - If a function is to be executed, a new function execution context is created (inside global execution context)
+### Hoisting
+During execution phase, the interpreter appears as if all the variables and function declaration looks like has been moved to the top <br/>
+This is because of the creating phase of the execution context <br/><br/>
+This works differently for variables with let and const. This is because of the block scope characteristics of let and const.<br/>
+For let and const variables, initialization and assignment happens in execution phase of EC
+``` javascript
+let x = 5;
+x = undefined; // Initialize
+x = 5; // Assign
+```
