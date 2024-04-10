@@ -45,3 +45,12 @@ let x = 5;
 x = undefined; // Initialize
 x = 5; // Assign
 ```
+
+# Async, Task-Queue n Event-Loop
+![Event Loop](https://miro.medium.com/v2/resize:fit:720/format:webp/1*iHhUyO4DliDwa6x_cO5E3A.gif)
+- JS executes tasks/functions one by one
+- When a async item is triggered, lets say a setTimeout from WebAPI, it gets registed as a callback and it goes to the Callback/Task-Queue
+- Once the call-stack is empty, the event loop picks the item from the callback-queue and puts t in the stack for execution.
+- The event loop keep repeating this till the callback queue is empty
+- In case of Promise, the callback is sent to a different queue called <b>Priority/Microtask</b> queue
+- This works exactly the same but the event loop gives priority to this queue over the normal callback/task queue
