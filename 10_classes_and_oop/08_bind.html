@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code - BIND</title>
+</head>
+
+<body>
+    <button>ClickMe</button>
+</body>
+
+<script>
+    class React {
+        constructor() {
+            this.library = 'React';
+            this.server = 'https://localhost:3000';
+
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this))
+        }
+
+        handleClick() {
+            console.log('Btn clicked');
+            console.log(this.server)
+        }
+    }
+
+    const app = new React();
+</script>
+
+</html>
+
+<!--
+    Bind allows you to pre-define the context and create a new function
+    When using bind, its not that the original function is being executed,
+    but a new function is created and executed
+-->
