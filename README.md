@@ -1,2 +1,3 @@
 # chai-aur-code-JS
-Javascript in 1 shot in Hindi
+
+<a href="https://www.youtube.com/playlist?list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37">Chai aur Javascript | Hindi</a>
