@@ -36,3 +36,13 @@ is used to store patterns to match characters/character set in a string;
 - All the input that cannot be converted to number like `undefined` , `"asdasdas"` etc will be returned as `NaN` i.e. `Not a Number` [type of `NaN` is again `number`]
 
 - While using `Boolean()` to convert data to boolean type, all the truthy values like `non-zero numbers`, `string`, `obj` return `true` and all falsy values like 0, `empty string`, `null`, `NaN` return `false`;
+
+### Prefix and postfix increment
+let a = 5;
+
+let b= ++a, this is an example of prefix increment.
+here the assignment is done after increment, i.e, the value of b = 6
+
+let b= a++, this is an example of postfix increment.
+here the assignment is done before increment, i.e, the value of b = 5
+
