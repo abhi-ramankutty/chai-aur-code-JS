@@ -31,3 +31,8 @@ There is no scope of writing `"use nostrict"` and things like that to escape fro
 - `RegExp` - Another special object which
 is used to store patterns to match characters/character set in a string;
 
+## Conversion
+- While using the `Number()` to convert data to type `number`, all the truthy-number strings are converted to number, all the falsy values like `empty string`, `null`, `false` are converted to 0.
+- All the input that cannot be converted to number like `undefined` , `"asdasdas"` etc will be returned as `NaN` i.e. `Not a Number` [type of `NaN` is again `number`]
+
+- While using `Boolean()` to convert data to boolean type, all the truthy values like `non-zero numbers`, `string`, `obj` return `true` and all falsy values like 0, `empty string`, `null`, `NaN` return `false`;
