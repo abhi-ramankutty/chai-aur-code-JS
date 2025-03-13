@@ -22,3 +22,12 @@ There is no scope of writing `"use nostrict"` and things like that to escape fro
 - `null` - Standalone value which reprents emptiness. <i>typeOf value of `null` is `object`</i>
 - `undefined` - this represents that a variable is declared but its not assigned with any value. <i>typeOf value of `undefined` is `undefined`</i>
 - `symbol` - introduced in ES6 that represents a unique identifier
+
+### Non-Prmiitive(Reference) Data types
+- `Objects` - Holds data as key-value pairs
+- `Array`- Special type of object. Basically a list of items where index is key and the value is the item at that position in the array.
+- `function` - re-usable set of code that performs a designated task.
+- `Date` - Another special object used for dealing with data-time data
+- `RegExp` - Another special object which
+is used to store patterns to match characters/character set in a string;
+
