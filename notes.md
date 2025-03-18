@@ -46,3 +46,10 @@ here the assignment is done after increment, i.e, the value of b = 6
 let b= a++, this is an example of postfix increment.
 here the assignment is done before increment, i.e, the value of b = 5
 
+## Comparision
+- The process of comparing two values (or type) of data using operators. Thw output of such comparison is a boolean value.
+- By default, comparision of 2 numbers say 2>0 or 1!=5 is straight forward and will give straight forward answer.
+- Problem occurs when 2 different data types are being compared. since it doest work as expecrted. This is because the comparison operators like >, >=, < and <= will convert the data on the LHS to the the datatype of RHS.
+- Equality operators doesnt convert the value. It just check for equality.
+- To aovid this problem, strict comparions are used (as a means of best-practice). Strict comparison check for the dataType and the vause to make its check..
+
