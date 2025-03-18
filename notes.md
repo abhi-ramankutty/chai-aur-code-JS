@@ -59,3 +59,17 @@ here the assignment is done before increment, i.e, the value of b = 5
 - Equality operators doesnt convert the value. It just check for equality.
 - To aovid this problem, strict comparions are used (as a means of best-practice). Strict comparison check for the dataType and the vause to make its check..
 
+## Stack & Heap Memory - Basics
+- Stack Memory is used for storing values of all the Primitive data types
+- In Stack, a copy of the value is created (while reassigning)<br/>
+Eg: let a = 5; let b = a; <br />
+If you update the value of b, value of a wont change (since a copy of the value was assigned to b) 
+- A call stack is created during function execution to store/access local variables, parameters, and return address of the function.
+- Stack follows FIFO strategy.(i.e. First In First Out) 
+- The data can be allocated and accessed relatively fast
+- 
+- Heap Memory is used for all the reference (non primitive) data types
+- In Heap, the reference of the original data is assigned to the variable(s);<br/>
+Eg: let a = {name: 'Yuri'}; let b = a;
+If you update the value of name in b, value of name in a will also be updated (this is because the same reference is assigned to both a & b)
+- The allocation and accessed to data is relatively slow.
