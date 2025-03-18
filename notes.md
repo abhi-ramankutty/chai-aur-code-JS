@@ -15,6 +15,7 @@ There is no scope of writing `"use nostrict"` and things like that to escape fro
 ## Data types and values
 
 ### Primitive Data types
+- There are 7 main types of Primitive Datatypes in JS. They are `call-by-value`,
 - `number` - represents floating point number value between the range `(2^53 - 1)` and `-(2^53 - 1)`
 - `BigInt` - built-in object that represents whole numbers larger than (2^53 - 1)
 - `string` - holds/represent character(s) 
@@ -24,12 +25,17 @@ There is no scope of writing `"use nostrict"` and things like that to escape fro
 - `symbol` - introduced in ES6 that represents a unique identifier
 
 ### Non-Prmiitive(Reference) Data types
+- Anything that doesn't belong to Primitive data types falls under Non-Prmiitive(Reference) Data type.
 - `Objects` - Holds data as key-value pairs
 - `Array`- Special type of object. Basically a list of items where index is key and the value is the item at that position in the array.
 - `function` - re-usable set of code that performs a designated task.
 - `Date` - Another special object used for dealing with data-time data
 - `RegExp` - Another special object which
 is used to store patterns to match characters/character set in a string;
+
+### Data types - Summary
+- <a href="https://262.ecma-international.org/5.1/#sec-11.4.3">Type of Data types</a>
+
 
 ## Conversion
 - While using the `Number()` to convert data to type `number`, all the truthy-number strings are converted to number, all the falsy values like `empty string`, `null`, `false` are converted to 0.
