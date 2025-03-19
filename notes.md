@@ -73,3 +73,12 @@ If you update the value of b, value of a wont change (since a copy of the value 
 Eg: let a = {name: 'Yuri'}; let b = a;
 If you update the value of name in b, value of name in a will also be updated (this is because the same reference is assigned to both a & b)
 - The allocation and accessed to data is relatively slow.
+
+## Strings
+- `strings` are used to represent textual data.
+- `string` is one of the primitive values and the `String` object is a wrapper around a `string` primitive.
+- Can be created( or declared) using `single-quotes`, `double-quotes` or `back-ticks`
+- `back-ticks` - also knows as template-literals are used fo sting interpolation as well
+- `string` can also be created(or declared) using the String Object`let name = new String("Tanjiro")`
+- `String` is also a type of object and the `index(position)` of the character acts as the `key`, thus forming a `key-value` pair like normal object.
+- Like all objects, `string` contains a set of properties and methods which can be accessed using a dot(.) operator
