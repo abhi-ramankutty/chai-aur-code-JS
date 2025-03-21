@@ -82,3 +82,21 @@ If you update the value of name in b, value of name in a will also be updated (t
 - `string` can also be created(or declared) using the String Object`let name = new String("Tanjiro")`
 - `String` is also a type of object and the `index(position)` of the character acts as the `key`, thus forming a `key-value` pair like normal object.
 - Like all objects, `string` contains a set of properties and methods which can be accessed using a dot(.) operator
+
+## Numbers, Maths & Date-Time
+- Please refer to doc or refere back to <a href="https://youtu.be/_KqpeDc47Ro?si=A7OnMN3JNggL9ANq">Number & Maths</a> and <a href="https://youtu.be/tGLCuoumaGY?si=opZAdENY_2Z02ZFK">Date-Time</a> videos
+
+## Arrays
+- array is an object n JS which can store a collection of multiple elements(items) of different data-types in it.
+- arrays are resizable and its index starts with 0
+- JS array copy operations creates a <em>shallow copy</em> of the array. (i.e. while copying an array, the properities share the same reference point)
+- since array is an object, it comes with a set of properties and methods. Check MDN Docs for reference.
+    - `array.slice` - slice is a method on array that creates a shallow-copy of the portion of an array into a new array
+    - `array-slice` takes 2 inputs. start and end index.
+    - startIndex is included where-as the endIndex is not included
+    - `slice` does <b>not</b> modify the existing array, it return a <b>new</b> array.
+    <br/>
+    <br/>
+    - `array-splice` - splice is a method on array that can add, remove or replace items in the array
+    -  `array-splice` takes in multiple inputs. i.e. startIndex, deleteCount and ...items(optional)
+    - `splice` return the removed items and also modifies the existing array(removed the returned items)
