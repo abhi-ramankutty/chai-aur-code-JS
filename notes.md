@@ -100,3 +100,14 @@ If you update the value of name in b, value of name in a will also be updated (t
     - `array-splice` - splice is a method on array that can add, remove or replace items in the array
     -  `array-splice` takes in multiple inputs. i.e. startIndex, deleteCount and ...items(optional)
     - `splice` return the removed items and also modifies the existing array(removed the returned items)
+
+## Objects
+- `object` - its a data-type in JS which is essentially a collectin of properties n methods in JS
+- `object` created using constructor / Object.create() are `Singleton` in nature (i.e. a single instance of the object is maintained)
+- `object` created using object literals (i.e. abc = {}) are non-singleton in nature
+- `let abc = {a: 1, "a b": 2, [sym]=3}`. The properties of the obj can be accessed via multiple methods like mentioned below
+    - The dot(.) notation - abc.a
+    - The bracket([]) notation - abc["a b"]
+    - The bracket, with symbol - abc[sym]
+- To override the value of a property inside an object, just access the property and assign a new value [abc.a = 5]
+- You can also freeze an object to make it immutable by using the `Object.freze(abc)` method
