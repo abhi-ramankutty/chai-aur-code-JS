@@ -110,4 +110,17 @@ If you update the value of name in b, value of name in a will also be updated (t
     - The bracket([]) notation - abc["a b"]
     - The bracket, with symbol - abc[sym]
 - To override the value of a property inside an object, just access the property and assign a new value [abc.a = 5]
-- You can also freeze an object to make it immutable by using the `Object.freze(abc)` method
+- You can also freeze an object to make it immutable by using the `Object.freze(abc)` method.
+
+- Object de-structuring: <pre>
+const course = {
+    name: "JS in Hindi",
+    channel: "Chai aur Code",
+    courseInstructor: "Hitesh Choudhry",
+    price: 999,
+};
+const {name, courseInstructor: instructor, price} = course;
+console.log(`${name} by ${instructor} | price: ₹${price}`)
+</pre>
+
+- JSON - JavaScript Object Notation [read basics]
