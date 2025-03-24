@@ -132,3 +132,4 @@ console.log(`${name} by ${instructor} | price: ₹${price}`)
 - Function `params`(parameters) are the inputs that are written in function declaration
 - Function `args`(arguments) are the inputs that are given in function during its execution(or calls).
 - function `params` can be assigned with a default value with an assigment during fun-declaration`eg: function loginUserMsg(userName = "Kira") {}`
+- When multiple flexible params are to given as input, you can use the `rest operator (i.e ...)`. This depecits the args as an array of `inputs`.<br/>`eg: function calCartValue(...vals) { console.log(vals)}`<br/>`...vals` can take multiple arguments as an input and this will be treated as an array of input-args in `vals`
