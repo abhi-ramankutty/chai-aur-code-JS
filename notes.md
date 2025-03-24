@@ -123,4 +123,12 @@ const {name, courseInstructor: instructor, price} = course;
 console.log(`${name} by ${instructor} | price: ₹${price}`)
 </pre>
 
-- JSON - JavaScript Object Notation [read basics]
+- `JSON` - JavaScript Object Notation [read basics]
+
+## Functions
+-  A reusable block of code designed to perform a specific task.
+- `Functions` can take inputs, process them, and return a result.
+- `Functions` can be defined using function declarations or function expressions;
+- Function `params`(parameters) are the inputs that are written in function declaration
+- Function `args`(arguments) are the inputs that are given in function during its execution(or calls).
+- function `params` can be assigned with a default value with an assigment during fun-declaration`eg: function loginUserMsg(userName = "Kira") {}`
