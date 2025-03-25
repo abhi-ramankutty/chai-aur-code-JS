@@ -176,3 +176,18 @@ myObject.myMethod(); // Output: John
 - IIFEs create a new scope, which helps to avoid variable conflicts.
 - Variables declared within an IIFE are local to that function, preventing them from polluting the global scope and potentially causing naming conflicts.
 - They are a useful tool for code encapsulation.
+
+## JS Call Stack & Execution Context
+- For video reference, please check the playlist by <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">JavaScript: Under The Hood - By Traversy Media</a>
+- JS is fundamentally a `single-threaed` language. i.e. it has a single sequential flow of control.
+- Operations are executed one line after another in a sequential manner
+- At its core, JS execution is `synchronous` in nature. 
+- While JS is `synchronous`, it has `asynchronous` capabilities with the help of web APIs. A `callback` or a `promise` is returned to the `call-stack` once the execution of `asynchronous` operation is completed.
+- A `thread` in JS has a `call-stack` which is a stack of functions to be executed. It also manages the `execution-context` of each function
+- `Global Execution Context` is always at the bottom of the call stack.
+- `LIFO (Last In, First Out)`: The call stack operates on the principle of last in, first out. The last function pushed onto the stack is the first one to be popped off once it completes execution.
+- When a `function` is called, it is pushed onto the call stack. Once the `function` finishes executing, it is popped off.
+- In cases of `nested function` calls, the outer function remains on the stack while the inner function is executed and then popped off, followed by the outer function
+- For reference, <a href="https://youtu.be/-G9c4CMMUKc?si=fbCuTmYNF8blFN_f">watch the video here</a><br/><br/>
+
+- 
