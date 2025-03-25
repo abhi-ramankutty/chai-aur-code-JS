@@ -150,3 +150,23 @@ console.log(`${name} by ${instructor} | price: ₹${price}`)
         - Variables declared with `var` inside a function are `function-scoped`.
 - variables declared with `let` & `const` have `block-scope` where-as variables declared with `var` has `global-scope`
 - One unique behaviour of `var` can be seen in `function/local scope` where it acts like a `block-scope`
+
+## this
+- `this` refers to the object that a function is associated with.
+- The value of `this` is determined by how a function is called and how it was defined/declared;
+- `this` referes to the `global` obj(`Window` in browser and `gloabl` in node), when used outside any function;
+- In regular functions like `function abc() {console.log(this)}`, this refers to the `global` object
+- When a `function` is called as a method of an object, `this` referes to the obj
+<pre>
+let myObject = {
+        name: "John",
+        myMethod: function() {
+        console.log(this.name); // this refers to myObject
+    }
+};
+
+myObject.myMethod(); // Output: John
+</pre>
+- When a `function` is used as a constructor (with the `new` keyword), `this` refers to the newly created object.
+- `Arrow` functions do not have their own `this` context.
+- `Arrow` functions inherit the `this` value from the enclosing (lexical) scope.
