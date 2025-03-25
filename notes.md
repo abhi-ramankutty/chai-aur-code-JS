@@ -179,6 +179,8 @@ myObject.myMethod(); // Output: John
 
 ## JS Call Stack & Execution Context
 - For video reference, please check the playlist by <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">JavaScript: Under The Hood - By Traversy Media</a>
+
+### Thread & CallStack
 - JS is fundamentally a `single-threaed` language. i.e. it has a single sequential flow of control.
 - Operations are executed one line after another in a sequential manner
 - At its core, JS execution is `synchronous` in nature. 
@@ -188,6 +190,34 @@ myObject.myMethod(); // Output: John
 - `LIFO (Last In, First Out)`: The call stack operates on the principle of last in, first out. The last function pushed onto the stack is the first one to be popped off once it completes execution.
 - When a `function` is called, it is pushed onto the call stack. Once the `function` finishes executing, it is popped off.
 - In cases of `nested function` calls, the outer function remains on the stack while the inner function is executed and then popped off, followed by the outer function
-- For reference, <a href="https://youtu.be/-G9c4CMMUKc?si=fbCuTmYNF8blFN_f">watch the video here</a><br/><br/>
+- For reference, <a href="https://youtu.be/-G9c4CMMUKc?si=fbCuTmYNF8blFN_f">watch the video here</a>
 
-- 
+### Execution Context & Hoisting
+For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch the video here</a>
+
+#### Execution Context
+- `Execution Context` is a special environment created by JS-engine to handle the transformation & execution of the code
+- It contains the current running(executing) piece of code and everything needed for its execution.
+- There are two main types of `execution context`
+    - `Global execution context` - Created when the script starts running
+    - `function execution context` - Created each time when a function is evoked(called)
+- Every `execution context` has 2 phase
+    - `Creation phase` (Memory creation phase)
+        - This occurs as soon as the execution context is created
+        - The `Global object` is created (`window` in browser and `global` in Node.js)
+        - `this` is bound to the `Global object`
+        - `Heap Memory setup`- Variables are allocated memory and initialized as `undefinied` in `heap`
+        - For `functions`, the whole function declaration is stored in the memory
+    - `Execution phase` 
+        - In this phase, the JS code is executed line by line, one after the other.
+        - When a function is evoked, a whole new `function execution context` is created. This again follows the same `Creation` and `Execution` phase of an `execution context`
+
+#### Hoisting
+- `Hoisting` is the process by which the interpreter appears to move the declaration (variable and function) to the very top of their scope before execution.
+- During the `Creation` phase of `execution context`, function declarations are stored as a whole in the memory.
+- This process allows the `functions` to be called before their actual `function declaration` while executing the code.
+- Variables declared with `var` are also hoisted and initialized as `undefined`. 
+- This allows the varables to be assessed before the actual declaration without throwing an error. (value will be `undefined`)
+- Variables declared with `let` and `const` are also hoisted, but they are not initialized. They reside in a Temporal Dead Zone(TDZ) from the begining of the scope, which cannot be accessed until their declaration. Hence accessing such variable will throw error.
+- `let` and `const` are `block-scoped` where as `var` is `globally or function-scoped`.
+- `block-scoped` variables are stored in a separate scope and not in the global scope during the `Creation` phase of `execution context`and hence not accessible globally.
