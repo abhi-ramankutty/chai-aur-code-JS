@@ -133,3 +133,19 @@ console.log(`${name} by ${instructor} | price: ₹${price}`)
 - Function `args`(arguments) are the inputs that are given in function during its execution(or calls).
 - function `params` can be assigned with a default value with an assigment during fun-declaration`eg: function loginUserMsg(userName = "Kira") {}`
 - When multiple flexible params are to given as input, you can use the `rest operator (i.e ...)`. This depecits the args as an array of `inputs`.<br/>`eg: function calCartValue(...vals) { console.log(vals)}`<br/>`...vals` can take multiple arguments as an input and this will be treated as an array of input-args in `vals`
+
+## Scopes
+- `Scope` refers to the accessibility of variables and functions within certain regions of a program
+- There are 3 main types os scopes in JS.
+    - `Global scope`
+        - Variables declared outside of any function or block have global scope.
+        - They can be accessed from anywhere in the JavaScript code, including within functions
+    - `Block scope`
+        - Variables declared within a block (e.g., inside `if` statements, `for` loops, or curly braces `{}`) have block scope.
+        - Variables declared with `let` and `const` are block-scoped.
+        - This also helps to avoid variable hoisting issues related to var
+    - `function/local scope`
+        - Variables declared within a function have function scope.
+        - They are only accessible within that function.
+        - Variables declared with `var` inside a function are `function-scoped`.
+- variables declared with `let` & `const` have `block-scope` where-as variables declared with `var` has `global-scope`
