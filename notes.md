@@ -149,3 +149,4 @@ console.log(`${name} by ${instructor} | price: ₹${price}`)
         - They are only accessible within that function.
         - Variables declared with `var` inside a function are `function-scoped`.
 - variables declared with `let` & `const` have `block-scope` where-as variables declared with `var` has `global-scope`
+- One unique behaviour of `var` can be seen in `function/local scope` where it acts like a `block-scope`
