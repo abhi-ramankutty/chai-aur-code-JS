@@ -170,3 +170,9 @@ myObject.myMethod(); // Output: John
 - When a `function` is used as a constructor (with the `new` keyword), `this` refers to the newly created object.
 - `Arrow` functions do not have their own `this` context.
 - `Arrow` functions inherit the `this` value from the enclosing (lexical) scope.
+
+## IIFE - Immediately Invoked Function Expression
+- A function that is executed immediately after its declaration/creation (i.e. created)
+- IIFEs create a new scope, which helps to avoid variable conflicts.
+- Variables declared within an IIFE are local to that function, preventing them from polluting the global scope and potentially causing naming conflicts.
+- They are a useful tool for code encapsulation.
