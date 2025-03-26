@@ -221,3 +221,17 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
 - Variables declared with `let` and `const` are also hoisted, but they are not initialized. They reside in a Temporal Dead Zone(TDZ) from the begining of the scope, which cannot be accessed until their declaration. Hence accessing such variable will throw error.
 - `let` and `const` are `block-scoped` where as `var` is `globally or function-scoped`.
 - `block-scoped` variables are stored in a separate scope and not in the global scope during the `Creation` phase of `execution context`and hence not accessible globally.
+
+#### Asynchronous JavaScript, Task Queue & Event Loop
+- JS at its core is s`ingle-threaded` & `synchronous` in nature and executes tasks/operations line by line one after the other on a single thread.
+- `Blocking` operation are the one which takes long time to execute and `halts` further execution of the code.
+- `Non-Blocking` operation are the one which takes long time to execute but does `not halt` further execution of the code. It allow the program to continue execution while the operation is in progress.
+- `Web APIs` (like setTimeout, DOM manipulation methods, and fetch in browsers, and file system operations in Node.js) enable `asynchronous` behaviour. These APIs are `not` part of the core JavaScript language itself.
+- The `asynchronous` functions often uses the `callback`
+- The completed `asynchronous` operations are added to the `callback(task) queue`.
+- There is an `event-loop`, which keeps continuously monitoring the `callback queue` and `call stack`.
+- When the `stack` is empty, the `event-loop` takes the first item entered in the `callback queue` and put it into the `stack` to complete the task (i.e. execution)
+- When it comes to `Promise`, the `results/callbacks` from the `resolved Prmoise` are pushed to a separate queue called as the `microtask/priority queue`.
+- Since the `microtask queue` has a `higher priority` than the `task queue`, the `event-loop` processes the microtasks queue items before the `event-loop` checks the regular `task queue`
+- The core takeaway is that while the JS is synchronous and single threaded in nature, with the help of `web APIs`, `task queue`, `microtask queue` and `event-loop` together it enebles the JS to be `asynchronous` and `non-blocking` in nature
+- For reference, <a href="https://youtu.be/28AXSTCpsyU?si=63dmm1IyxPMQDnXX">watch the video here</a>
