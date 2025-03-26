@@ -222,7 +222,7 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
 - `let` and `const` are `block-scoped` where as `var` is `globally or function-scoped`.
 - `block-scoped` variables are stored in a separate scope and not in the global scope during the `Creation` phase of `execution context`and hence not accessible globally.
 
-#### Asynchronous JavaScript, Task Queue & Event Loop
+### Asynchronous JavaScript, Task Queue & Event Loop
 - JS at its core is s`ingle-threaded` & `synchronous` in nature and executes tasks/operations line by line one after the other on a single thread.
 - `Blocking` operation are the one which takes long time to execute and `halts` further execution of the code.
 - `Non-Blocking` operation are the one which takes long time to execute but does `not halt` further execution of the code. It allow the program to continue execution while the operation is in progress.
@@ -235,3 +235,13 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
 - Since the `microtask queue` has a `higher priority` than the `task queue`, the `event-loop` processes the microtasks queue items before the `event-loop` checks the regular `task queue`
 - The core takeaway is that while the JS is synchronous and single threaded in nature, with the help of `web APIs`, `task queue`, `microtask queue` and `event-loop` together it enebles the JS to be `asynchronous` and `non-blocking` in nature
 - For reference, <a href="https://youtu.be/28AXSTCpsyU?si=63dmm1IyxPMQDnXX">watch the video here</a>
+
+### Memory Storage
+- JS uses the `stack` and `heap` to store data.
+- All the `primitive values` are stored directly in `stack` and has a `fixed` amount of memory allocated for the data in the `stack`.
+- Assigning a `primitive` variable to another creates a copy of the value on the `stack`. Changes to one variable do not affect the other.
+- All the `reference data` like objects, function n arrays are stored in `heap`. It has a larger memory area and it is accessed via reference-point and not directly.
+- Assigning a `reference` type variable to another creates a new reference that points to the same object in the `heap`. Modifying the object through one reference will affect all other references pointing to the same object
+- Higher-level languages like JS automatically allocate memory when objects are created.
+- It also automatically frees up memory when it's no longer needed through a process called garbage collection
+- For reference, <a href="https://youtu.be/Hci9Bb4_fkA?si=cxtMG6xWb79poaAq">watch the video here</a>
