@@ -245,3 +245,16 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
 - Higher-level languages like JS automatically allocate memory when objects are created.
 - It also automatically frees up memory when it's no longer needed through a process called garbage collection
 - For reference, <a href="https://youtu.be/Hci9Bb4_fkA?si=cxtMG6xWb79poaAq">watch the video here</a>
+
+### JS Engine
+- A `JS-engine` is a software component within a `JS-runtime` environment which is responsible for  `interpreting`, `optimizing` and `executing` the `JS-code`. Modern engines use techniques like `Just-In-Time(JIT)` compilation to improve performance.
+- `Compilation vs. Interpretation`
+    - `Compiled languages` like JAVA/C/C++ completely translate the code into `machine-code` before execution. This has a faster `run-time` with relatively slower `write-time`
+    - `Interpreted languages` like `JavaScript` are executed line-by-line, with each statement being interpreted into `machine-code` at run-time. This has a faster `write-time` with relatively slower `run-time`
+    - JavaScript engines, however, now incorporate compilation techniques like `Just-In-Time(JIT)` compilation to improve performance.
+- `JS-engine processing pipeline(V8)`
+    - `Parsing`: The engine's parser reads the source code line by line, checks for syntax errors, and generates an `Abstract Syntax Tree (AST)`. The `AST` is a tree-like representation of the code's structure.
+    - `Interpretation`: An interpreter takes the `AST` and transforms it into `bytecode`, which is an intermediate representation. Bytecode is universal and allows for optimisations.
+    - `Compilation (JIT)`: Modern engines utilise `Just-In-Time (JIT)` compilation. This involves taking the `bytecode` and compiling it into `machine-code` during runtime. This allows for dynamic optimisations based on `runtime` information. This contrasts with `Ahead-Of-Time (AOT)` compilation where the entire code is compiled `before` execution (as in C/C++).
+    - `Execution`: Finally, the generated `machine-code` is run by the computer's hardware
+- For reference, <a href="https://youtu.be/oc6faXVc54E?si=PTfLx9DSwmgTdEQo">watch the video here</a>
