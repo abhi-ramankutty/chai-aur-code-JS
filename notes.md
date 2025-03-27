@@ -286,3 +286,15 @@ switch (key) {
     </pre>
 - `Nullish Coalescing Operator (??)`: This operator returns the right-hand side operand if the left-hand side is null or undefined.
 - `Ternary Operator (?:)`: Note the syntax: condition ? true_expression : false_expression as a concise if-else for single expressions
+
+## Loops
+- Loops allow you to repeat a block of code `multiple` times
+- `for-loop`: `for(let i=0; i<10; i++) { execute code }` A basic for loop has 3 key parts.
+    - `Initialization`: This is where a variable is declared and initialised, often used as a loop counter (e.g., let i = 0). This part runs only once at the beginning.
+    - `Condition Check`: An expression that is evaluated before each iteration (e.g. i<10). The loop body executes as long as this condition remains true.
+    - `Increment/Decrement (Update)`: This part modifies the loop counter variable after each iteration of the loop body (e.g., i++). This is crucial for the loop to eventually terminate.
+- `loops` create a `block-scope`.<br/> Variables declared with `let` within this block (including in the initialisation) are only accessible within that scope.<br/> Trying to access them outside the loop will result in an error
+- In the case of `nested-loops`, there is no difference.<br/>`child-loop` can access `parent-loop's` variables but the `parent-loop` cannot access the variables of `child-loop's` variables.
+- There are 2 major keywords associated with `for-loop`
+    - `break`: A way to immediately terminate the execution of a loop. <br/> When `break` is encountered during loop execution, the execution is terminated at that very moment and jumps out of the loop.
+    - `continue`: A way to skip further execution of the `loop-block` for the current iteration and proceed to the next iteration
