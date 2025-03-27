@@ -258,3 +258,31 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
     - `Compilation (JIT)`: Modern engines utilise `Just-In-Time (JIT)` compilation. This involves taking the `bytecode` and compiling it into `machine-code` during runtime. This allows for dynamic optimisations based on `runtime` information. This contrasts with `Ahead-Of-Time (AOT)` compilation where the entire code is compiled `before` execution (as in C/C++).
     - `Execution`: Finally, the generated `machine-code` is run by the computer's hardware
 - For reference, <a href="https://youtu.be/oc6faXVc54E?si=PTfLx9DSwmgTdEQo">watch the video here</a>
+
+## Control flow
+- An important yet basic part of programming to decide which part is to be executed and which part is to be omitted
+- `if (condition) { code to execute if true } else { code to execute if false }`. The code inside the curly braces of `if` block runs only when the condition is `true`. Else the code inside the curly braces of `else` block is executed
+- `else-if`: <pre>
+    if(condition_1) {
+        executed if condition_1 is true
+    } else if(condition_2) {
+        executed if condition_1 is false but condition_2 is true
+    } else {
+        executed if both condition_1 condition_2 is false
+    }</pre>
+- `Comparison operators`: <, >, <=, >=, ==, !=, === (strict equality checks both value and type), and !==
+- `Logical Operators`: Logical AND (`&&`) (both must be true), Logical OR (~||~) (at least one must be true) for combining conditions
+- `swith` statement: <pre>
+switch (key) { 
+    case value1:
+        // code;
+        break;
+    case value2:
+        // code;
+        break; 
+    default:
+        // code;
+    }
+    </pre>
+- `Nullish Coalescing Operator (??)`: This operator returns the right-hand side operand if the left-hand side is null or undefined.
+- `Ternary Operator (?:)`: Note the syntax: condition ? true_expression : false_expression as a concise if-else for single expressions
