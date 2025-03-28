@@ -315,3 +315,32 @@ switch (key) {
 - The key difference from the `while-loop` is that the code inside the `do-block` executes at least once, before the `condition` is checked.
 - The `condition` is checked at the `end` of the loop iteration.- Since the `condition` is checked at the `end`, even if the `condition` is initially `false`, the `do-block` will still execute `once`.<br/>For example, if score was initialised to 11 in the above example, "Score is 11" would be printed once.
 - `do-while-loops` are less commonly used in practice compared to `for-loops` and `while-loops`. They are typically used in specific, rare cases where the code block must execute at least `once`.
+
+### for-of for-in and forEach loop
+#### for-of loop
+- The syntax of `for-of-loop` is `for (const element of object) { }`
+- Used to iterate over various iterable `object` like arrays, strings, and Maps.
+- `element` is the iterator variable, which holds the value of each element in the iterable `object`.
+- `arrays`: It iterates directly over the values of an array without needing to manage indices.
+- `strings`: It iterates over each character of a string.
+- `Map`: It iterates over `key-value` pairs as arrays `[key, value]`. <br/>Destructuring can be used within the loop to directly access keys and values separately: `for (const [key, value] of map) {}`
+- JS-objects are `NOT` inherently iterable in the same way as `arrays`, `strings`, or `Maps` with `for-of`
+
+#### for-in loop
+- The syntax of `for-in-loop` is `for (const key in object) { }`
+- The `key` variable holds the property name (key) of the `object`.<br/> And you can access the `value` associated with each `key` using `bracket` notation: `object[key]`
+- It is primarily used to iterate over the `keys` of a plain `JavaScript object`.
+- Can also be used with `arrays`, but it iterates over the `indices` (which are the `keys` in an `array-object`) rather than the values directly.
+- Not suitable for direct iteration over the values or `key-value pairs of Maps` using this syntax.<br/>`Maps` are not designed to be iterated with `for...in`
+
+#### forEach loop
+- The syntax of `forEach-loop` is `array.forEach(callbackFunction)`.<br/>It is a method that is directly called on an `array`.
+- `forEach` is a `higher-order function` because it takes `another function` (a callback function) as an `argument`.
+- `callbackFunction`: The provided callback function is executed once for each element in the array. <br/> The callback function can accept up to three arguments in order:
+    - The current `item/value` of the array.
+    - The `index` of the current item.
+    - The `array` itself.
+- There are different ways to define the `callback`:
+    - `array.forEach(function(item, index, arr) { })` Using a traditional anonymous function.
+    - `array.forEach((item, index, arr) => {})` Using an arrow function (item) => { ... }
+    - `array.forEach(callbackFunction)` Passing a reference to an existing function.
