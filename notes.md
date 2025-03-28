@@ -344,3 +344,28 @@ switch (key) {
     - `array.forEach(function(item, index, arr) { })` Using a traditional anonymous function.
     - `array.forEach((item, index, arr) => {})` Using an arrow function (item) => { ... }
     - `array.forEach(callbackFunction)` Passing a reference to an existing function.
+
+### filter, map & reduce
+
+#### filter
+- The `filter` method iterates over an array and `returns` a `new` array containing only the elements that pass a certain condition defined in the `callback function`.
+- The `callback function` in `filter` receives the `current value` (or element) of the array as an argument (e.g., num).
+- Based on the condition, the callback fun should return a boolean value.
+    - If tr`ue, the element/item is `added` in the array that is returned
+    - If `false`, the element/item is `excluded` in the array that is returned
+
+#### map
+- The `map` method iterates over an array and return a new array by applying the provided `callback function` to each element of the original array.
+- The `callback function` in `map` receives the `current value` (or element) of the array as an argument (e.g., num).
+- The `callback function` should return the `new value` that will be placed in the corresponding position of the new array
+
+#### reduce
+- The syntax `reduce` function is `array.reduce((accumulator, currentVal)=>{}, initialValue)`;
+- The reduce function takes in 2 arguments. A `callback-function` and an optional `initialValue`
+- The `callback-function` inturn taken in 2 arguments.
+    - `accumulator`: Also know as previous-value.<br/>
+    The value returned at each `iteration` is used as the `value` in `accumulator` for the `next iteration`.
+    - `currentVal`: This is the `iterator` which holds the current-item in iteration.
+- `initialValue`: Sets the initial-value of `accumulator`.<br/>
+This is an optional parameter. If omitted, the `accumulator` takes the first item as its initial-value.
+-
