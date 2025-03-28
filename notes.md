@@ -288,13 +288,30 @@ switch (key) {
 - `Ternary Operator (?:)`: Note the syntax: condition ? true_expression : false_expression as a concise if-else for single expressions
 
 ## Loops
-- Loops allow you to repeat a block of code `multiple` times
+- Loops allow you to repeat a block of code `multiple` times.
+- JS offers various types of loops, not just one (e.g., for, while, do-while).
+- The existence of multiple loop types provides choices for developers, even if one type can often achieve the same result.
+- `loops` create a `block-scope`.<br/> Variables declared with `let` within this block (including in the initialisation in case of `for-loop`) are only accessible within that scope.<br/> Trying to access them outside the loop will result in an error
+- In the case of `nested-loops`, there is no difference.<br/>`child-loop` can access `parent-loop's` variables but the `parent-loop` cannot access the variables of `child-loop's` variables.
+- There are 2 major keywords associated with `loops`
+    - `break`: A way to immediately terminate the execution of a loop. <br/> When `break` is encountered during loop execution, the execution is terminated at that very moment and jumps out of the loop.
+    - `continue`: A way to skip further execution of the `loop-block` for the current iteration and proceed to the next iteration
+
+### For loop
 - `for-loop`: `for(let i=0; i<10; i++) { execute code }` A basic for loop has 3 key parts.
     - `Initialization`: This is where a variable is declared and initialised, often used as a loop counter (e.g., let i = 0). This part runs only once at the beginning.
     - `Condition Check`: An expression that is evaluated before each iteration (e.g. i<10). The loop body executes as long as this condition remains true.
     - `Increment/Decrement (Update)`: This part modifies the loop counter variable after each iteration of the loop body (e.g., i++). This is crucial for the loop to eventually terminate.
-- `loops` create a `block-scope`.<br/> Variables declared with `let` within this block (including in the initialisation) are only accessible within that scope.<br/> Trying to access them outside the loop will result in an error
-- In the case of `nested-loops`, there is no difference.<br/>`child-loop` can access `parent-loop's` variables but the `parent-loop` cannot access the variables of `child-loop's` variables.
-- There are 2 major keywords associated with `for-loop`
-    - `break`: A way to immediately terminate the execution of a loop. <br/> When `break` is encountered during loop execution, the execution is terminated at that very moment and jumps out of the loop.
-    - `continue`: A way to skip further execution of the `loop-block` for the current iteration and proceed to the next iteration
+
+### While & Do-While loop
+#### While loop
+- The `while-loop` has a simple syntax: `while (condition) { // code to be executed `}.
+ It functions similarly to an `if-statement`.In that it checks a condition and the code inside the `while-loop` will continue to execute as long as the condition remains `true`.
+- Initialisation of variables used in the condition must occur <b>before</b> the `while-loop`.
+- An increment or decrement (or some mechanism to change the condition) must be present within the loop's body to prevent an `infinite` loop.
+- A `while-loop` can also iterate over an array by `manually` managing an index.
+#### Do-While Loop
+- The `do-while-loop` has the syntax: `do { // code to be executed } while (condition);`
+- The key difference from the `while-loop` is that the code inside the `do-block` executes at least once, before the `condition` is checked.
+- The `condition` is checked at the `end` of the loop iteration.- Since the `condition` is checked at the `end`, even if the `condition` is initially `false`, the `do-block` will still execute `once`.<br/>For example, if score was initialised to 11 in the above example, "Score is 11" would be printed once.
+- `do-while-loops` are less commonly used in practice compared to `for-loops` and `while-loops`. They are typically used in specific, rare cases where the code block must execute at least `once`.
