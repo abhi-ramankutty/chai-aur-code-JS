@@ -377,3 +377,38 @@ This is an optional parameter. If omitted, the `accumulator` takes the first ite
 - The `window` is the top-level object.
 - Inside the `window` object is the `document object`, which represents the `HTML document`.<br/>You can access it via `window.document` or directly as `document` because it's commonly used
 - Click <a href="https://excalidraw.com/#json=RfoSEXI7pCPq3XN-dZ2n_,vBTDdJ2ln1yjWMFGB1mF9Q">here</a> to see a small pictorial representation of DOM-Object(tree)
+
+## DOM Selectors
+- The primary method discussed is `document.getElementById('yourID')`
+- It's crucial to note the case sensitivity of this method `(getElementById)`
+- The method returns the specific element with the given `ID`.
+- Once an element is selected, its properties (like `id`, `className`) can be accessed using `dot` notation (e.g., `element.id`, `element.className`).<br/>Note that while the `HTML attribute` is `class`, JavaScript represents it as `className` in the `DOM`
+
+- `Accessing Attributes:`
+    - The `getAttribute('attributeName')` method retrieves the value of a specified attribute of an element (e.g., `element.getAttribute('id')`, `element.getAttribute('class')`).
+- `Setting Attributes:`
+    - The `setAttribute('attributeName', 'newValue')` method sets or changes the value of an attribute of an element (e.g., `element.setAttribute('class', 'test')`).<br/>Using `setAttribute` overwrites existing attribute values.<br/>To retain previous values (e.g., multiple classes), you need to include them in the new value
+- For easier access, selected `DOM elements` can be stored in JavaScript `variables` (e.g., `const titleElement = document.getElementById('title');`).
+- `Manipulating Element Styles:`
+    - The `style` property of a `DOM element` allows direct manipulation of its `CSS styles` (e.g., `element.style.backgroundColor = 'green', element.style.padding = '15px', element.style.borderRadius = '10px'`).
+    - CSS property names in JavaScript often use `camelCase` (e.g., `backgroundColor` instead of `background-color`).
+- `Accessing Element Content:`
+    - `textContent`: Retrieves all the text content of an element and its descendants.
+    - `innerHTML`: Retrieves or sets the HTML content of an element, including any HTML tags within it.
+    - `innerText`: Retrieves the visible text content of an element, taking into account CSS properties like `display: none`
+- `Selecting Elements by Class Name:`
+    - `document.getElementsByClassName('className')` selects all elements that have the specified class name.
+    - This method returns an `HTMLCollection`, which is `NOT` an `array`. It's an `array-like` object with an `item property` and `length`
+- `Using querySelector():`
+    - `document.querySelector('selector')` selects the `FIRST` element within the document that matches the specified CSS selector.
+    - It accepts any valid CSS selector syntax (e.g., tag names, IDs using #, classes using ., attribute selectors, pseudo-classes).
+- `Using querySelectorAll():`
+    - `document.querySelectorAll('selector')` selects `ALL` elements within the document that match the specified CSS selector.
+    - This method returns a `NodeList`, which is also an `array-like` object but has `different` properties than `HTMLCollection`<br/>Importantly, `NodeList has a forEach()` method directly available
+
+- `Differences Between NodeList and HTMLCollection:`
+    - Both are collections of DOM elements but have different functionalities.
+    - NodeList (returned by querySelectorAll) has a forEach() method.
+    - HTMLCollection (returned by getElementsByClassName, document.links, etc.) does not directly have forEach() or other Array methods like map.
+- `Looping Through HTMLCollection:` To use `array methods` on an `HTMLCollection`, it needs to be `converted` to an Array using `Array.from(htmlCollection)`.
+- `Iterating Through Collections:` Both `NodeList` and (once converted) HTMLCollection can be iterated over to apply changes to multiple selected elements. The forEach() method is a common way to do this
