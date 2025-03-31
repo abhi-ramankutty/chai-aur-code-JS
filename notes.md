@@ -368,4 +368,12 @@ switch (key) {
     - `currentVal`: This is the `iterator` which holds the current-item in iteration.
 - `initialValue`: Sets the initial-value of `accumulator`.<br/>
 This is an optional parameter. If omitted, the `accumulator` takes the first item as its initial-value.
--
+
+# DOM
+
+## DOM Intro
+- `DOM` is the `Document Object Model`. It represents your `HTML document` as a model of objects
+-  The `HTML` structure (like `<head>`, `<body>`, `<div>`, `<h1>`, `<p>`) is represented as a hierarchy of objects
+- The `window` is the top-level object.
+- Inside the `window` object is the `document object`, which represents the `HTML document`.<br/>You can access it via `window.document` or directly as `document` because it's commonly used
+- Click <a href="https://excalidraw.com/#json=RfoSEXI7pCPq3XN-dZ2n_,vBTDdJ2ln1yjWMFGB1mF9Q">here</a> to see a small pictorial representation of DOM-Object(tree)
