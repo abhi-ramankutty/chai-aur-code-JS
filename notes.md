@@ -412,3 +412,31 @@ This is an optional parameter. If omitted, the `accumulator` takes the first ite
     - HTMLCollection (returned by getElementsByClassName, document.links, etc.) does not directly have forEach() or other Array methods like map.
 - `Looping Through HTMLCollection:` To use `array methods` on an `HTMLCollection`, it needs to be `converted` to an Array using `Array.from(htmlCollection)`.
 - `Iterating Through Collections:` Both `NodeList` and (once converted) HTMLCollection can be iterated over to apply changes to multiple selected elements. The forEach() method is a common way to do this
+
+## DOM Manipulation
+- The `DOM` allows for `adding`, `removing`, and `displaying` data from sources (like databases) on a web page
+- `Selecting Elements:` By using `document.querySelector()` or similar functions of `DOM` to select `elements`.<br/> The selected element can be stored in a variable for easier manipulation
+- The `children` property of an element returns an `HTMLCollection` of its immediate child `elements`.<br/> `HTMLCollection` is an array-like object containing the element nodes.
+- The properities of the selected element like `innerHTML`, `style`, `className` etc can be accessed and manipulated.<br/>
+e.g. `element.style.color = "orange"` `element.style.innerHTML = "Text / HTML content"`
+- Classic `for-loops` can be used to `iterate` over the `elements` in an `HTMLCollection`
+- `firstElementChild` and `lastElementChild` properties provide direct access to the first and last `element` children of a parent, respectively.<br/>This is useful for targeting specific `elements` without iterating through the entire `children collection`
+- You can access `children` from `parents` via properties like `element.children`, `element.firstElementChild`, `element.lastElementChild` and parents can access children via properties like `element.parentElement`;
+- You can also access siblings element using `element.nextElementSibling` property;
+- The `childNodes` property returns a `NodeList`, which includes `ALL` types of nodes (elements, text nodes, comments, etc.) and not just element nodes.<br/>
+The structure represented by `childNodes` is a more accurate reflection of the underlying `DOM` tree.<br/>Even line breaks and whitespace between elements are considered text nodes.<br/>
+`Comments` are also included in the `childNodes` NodeList.<br/>
+Understanding childNodes is important for comprehending how front-end frameworks like React work with the DOM.
+
+
+- `Creating New Elements`:
+    - By using `document.createElement('elementName')`you can create a new HTML element (e.g., document.createElement('div')).
+    - The new element is created in memory and not yet attached to the DOM.
+    - The created element can be stored in a variable (e.g., newDiv).
+    - You can set attributes and style and to this element using the dot(.) notation [e.g. `element.className = 'className'`, `element.id = 'idName'`, `element.style.backgroundColor = 'green'`, `element.style.padding = '12px'`]
+    - You can also use `element.setAttribute('attributeName', 'attributeValue')` to set other attributes, including custom ones (e.g., newDiv.setAttribute('title', 'Generated Title')).<br/>
+    This method is preferred over direct property assignment for arbitrary attributes.
+- `Adding Text Content to New Elements`:
+    - By using the` element.innerText = 'text'` or `element.innerHTML = 'html'` you can add content to the element.<br/> However, these might involve an extra round trip to the DOM.
+    - By using `document.createTextNode('text')`, you can create a text node. And by using `element.appendChild(node)` you can append this node to the parent element as its child.
+    <br/>This is considered a more direct way to manipulate the DOM.
