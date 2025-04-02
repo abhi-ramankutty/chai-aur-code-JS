@@ -429,14 +429,25 @@ The structure represented by `childNodes` is a more accurate reflection of the u
 Understanding childNodes is important for comprehending how front-end frameworks like React work with the DOM.
 
 
-- `Creating New Elements`:
-    - By using `document.createElement('elementName')`you can create a new HTML element (e.g., document.createElement('div')).
-    - The new element is created in memory and not yet attached to the DOM.
-    - The created element can be stored in a variable (e.g., newDiv).
-    - You can set attributes and style and to this element using the dot(.) notation [e.g. `element.className = 'className'`, `element.id = 'idName'`, `element.style.backgroundColor = 'green'`, `element.style.padding = '12px'`]
-    - You can also use `element.setAttribute('attributeName', 'attributeValue')` to set other attributes, including custom ones (e.g., newDiv.setAttribute('title', 'Generated Title')).<br/>
+### Creating New Elements
+- By using `document.createElement('elementName')`you can create a new HTML element (e.g., document.createElement('div')).
+- The new element is created in memory and not yet attached to the DOM.
+- The created element can be stored in a variable (e.g., newDiv).
+- You can set attributes and style and to this element using the dot(.) notation [e.g. `element.className = 'className'`, `element.id = 'idName'`, `element.style.backgroundColor = 'green'`, `element.style.padding = '12px'`]
+- You can also use `element.setAttribute('attributeName', 'attributeValue')` to set other attributes, including custom ones (e.g., newDiv.setAttribute('title', 'Generated Title')).<br/>
     This method is preferred over direct property assignment for arbitrary attributes.
-- `Adding Text Content to New Elements`:
-    - By using the` element.innerText = 'text'` or `element.innerHTML = 'html'` you can add content to the element.<br/> However, these might involve an extra round trip to the DOM.
-    - By using `document.createTextNode('text')`, you can create a text node. And by using `element.appendChild(node)` you can append this node to the parent element as its child.
+
+### Adding Text Content to New Elements
+- By using the` element.innerText = 'text'` or `element.innerHTML = 'html'` you can add content to the element.<br/> However, these might involve an extra round trip to the DOM.
+- By using `document.createTextNode('text')`, you can create a text node. And by using `element.appendChild(node)` you can append this node to the parent element as its child.
     <br/>This is considered a more direct way to manipulate the DOM.
+
+### Adding node to Element
+- By using the `element.appendChild(node)`, you can add a newly created `text(textNode)` or `NodeElement` to the target elment
+
+### Edit node Element
+- `element.replaceWith()`: The `replaceWith()` method is used to replace the selected element with the newly created one.
+- `element.outerHTML`: The `outerHTML` property is used to replace the entire `HTML` of the selected element with a new `HTML string`.<br/>This requires providing the full HTML structure for the replacement
+
+### Remove Element
+- `element.remove()` method is called on the selected element to remove it from its parent in the DOM
