@@ -223,7 +223,7 @@ For reference, <a href="https://youtu.be/Fd9VaW0M7K4?si=uA0AbaJKS-8Xjk_8">watch 
 - `block-scoped` variables are stored in a separate scope and not in the global scope during the `Creation` phase of `execution context`and hence not accessible globally.
 
 ### Asynchronous JavaScript, Task Queue & Event Loop
-- JS at its core is s`ingle-threaded` & `synchronous` in nature and executes tasks/operations line by line one after the other on a single thread.
+- JS at its core is `single-threaded` & `synchronous` in nature and executes tasks/operations line by line one after the other on a single thread.
 - `Blocking` operation are the one which takes long time to execute and `halts` further execution of the code.
 - `Non-Blocking` operation are the one which takes long time to execute but does `not halt` further execution of the code. It allow the program to continue execution while the operation is in progress.
 - `Web APIs` (like setTimeout, DOM manipulation methods, and fetch in browsers, and file system operations in Node.js) enable `asynchronous` behaviour. These APIs are `not` part of the core JavaScript language itself.
@@ -474,3 +474,23 @@ Understanding childNodes is important for comprehending how front-end frameworks
 - `Controlling Event Propagation:`
     - `event.stopPropagation()`: This method stops the event from propagating further up or down the DOM tree.
     - `event.preventDefault()`: This method prevents the default action of the event.
+
+# JS Async - Recap
+- JS by default is a `synchronous` language <br/>i.e. The execution of the code happens line by line, one after the other
+- JS is a `single-threaded` language where only a single task can be executed at any given point of time.
+- The `asynchronous multi-thread` like behaviour of JS is an exception to the default behaviour, which is introduced with the help of external mechanism.
+- There are two main type of code (code execution) in JS
+    - `Blocking code`: Here the code execution is paused until the current task is completed.<br/>e.g. Saving user details in DB and respond with a success/failure msg
+    - `Non-Blocking code`: Here the program continuous its execution to take up other tasks while waiting for a particular operation to finish <br/> e.g. When an `fetch-api` is called, doing other tasks while the data is still being loaded.
+- The choice between `blocking` and `non-blocking` code depends on the use case.
+- The core part of JS-execiton involves the JS-engine which consists of the `call-stack` and `memory(heap)` section.
+    - `memory(heap)` is for memory allocation for the variables and function declaration.
+    - `call-stack` is for function execution.
+- JS usually runs within a runtime environment such as a web-browser or Node.js. <br/> These runtime-environments provides all the additional functionalities which are beyond the Core JS functionalities.
+- The `web-APIs` which are similar to the `APIs` in Node.js gives JS the superpower to handle `asynchronous` operations.
+- When JS thread encounters an async-function (say setTimeout), its callback-fun is registered and added to the `callback queue (task queue)` while the main-thread continues its execution
+- The `callback queue (task queue)` is used to hold all the callbacks of the `executed/complated` async tasks.
+- The `Event loop`, continuouly checks the `call-stack`. If the `call-stack` is empty, it takes the first callback from the `callback(task) queue` and puts it in the `call-stack` for execution.
+- In case of async task like `fetch` it uses `promise`.
+- All the `results/calbacks` from the resolved `promise` is sent to another queue called as the `microtask/priority queue`.
+- This `microtask/priority queue` has a higher priority over the `callback(task) queue` and the `Event-loop` pick the item in `microtask/priority queue` on priority.<br/>This potentially leads to faster execution of `promise resolutions`
