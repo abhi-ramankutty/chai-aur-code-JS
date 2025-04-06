@@ -451,3 +451,26 @@ Understanding childNodes is important for comprehending how front-end frameworks
 
 ### Remove Element
 - `element.remove()` method is called on the selected element to remove it from its parent in the DOM
+
+## DOM Events & Event Listeners
+- JS usually executes sequentially (i.e. line by line). But `browser-events` are an exception to this.<br/>These are invoked based on `user-activity` like `click`, `hover`, `keyboard-presses` etc
+- There are different approaches to handle these events,
+    - Using `Inline HTML attribute`: `<div onclick="alert('Hi')"></div>`<br/>This works, but its not scaleable when it comes to JS application.
+    - Using `document.getElementById('someId').onclick = function(e) { }`<br/>This is a much better approach when compared to `Inline HTML attribute` approach, but it still lacks the control on `event-propogation`
+    - Using `addEventListener()`<br/>This is the most powerful, modern and preferred way of handling browser events.<br/>This approach also gives you control on `event-propogation`
+- `addEventListener()` Syntax: `element.addEventListener(eventType, callbackFunction, useCapture)`
+    - `eventType`: This is to identify which `event` you want to listen(check) like `click`, `mouseover`, `keydown`, etc.
+        - The `name` of the `event` is passed as a `string`
+    - `callbackFunction`: This is the function that is called to handle the event.
+        - The `callbackFun` gets a special `event-obj` by default which contains a lot of valuable informations like the `position`, `target-element`, `parent-elements`, `child-elements`, `attributes` etc
+        - The `event-obj` also have a set of `methods` like `stopPropogation()`, `preventDefault()` etc. that can control the flow/working of the `event`.    
+    - `useCapture`: Used to control `Event Propagation`
+        - By `default`, the value of `useCapture` is `false`.<br/>i.e. `Event propogation` is set to `Bubbling`
+        - When `useCapture` is set as `true`, `Event Propogation` is set to `Capturing` mode
+
+- `Event Propagation`: Refers to the order in which event handlers are executed when events occur on nested elements
+    - `Bubbling (Default)`: The event propagates from the innermost target element up to its ancestor elements.<br/>This is the default behaviour (`useCapture` is `false` or `omitted`).
+    - `Capturing`: The event propagates from the outermost ancestor element down to the target element.<br/>This is enabled by setting the third parameter of addEventListener() `useCapture` is  set to `true`.
+- `Controlling Event Propagation:`
+    - `event.stopPropagation()`: This method stops the event from propagating further up or down the DOM tree.
+    - `event.preventDefault()`: This method prevents the default action of the event.
