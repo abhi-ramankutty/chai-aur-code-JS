@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | Async</title>
+</head>
+
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    let intervalRef;
+    const currentTime = function (param1, param2) {
+        console.log(`Time: ${new Date().toLocaleTimeString()}`);
+        console.log(`param1: ${param1}`);
+        console.log(`param2: ${param2}`);
+        console.log('**********************************************');
+    }
+
+    document.querySelector('#start').addEventListener('click', () => {
+        intervalRef = setInterval(currentTime, 2000, 'CurrentTime', new Date().toLocaleTimeString());
+    })
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(intervalRef);
+        console.log('clearInterval executed');
+    })
+</script>
+
+</html>

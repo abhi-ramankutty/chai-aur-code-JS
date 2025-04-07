@@ -186,11 +186,10 @@ function newGame() {
 # Project 5 solution
 
 ```javascript
-const insert = document.getElementById('insert');
+const insertKey = document.querySelector('#insert');
 
 window.addEventListener('keydown', (e) => {
-  insert.innerHTML = `
-    <div class='color'>
+	insertKey.innerHTML = `<div>
     <table>
     <tr>
       <th>Key</th>
@@ -204,10 +203,8 @@ window.addEventListener('keydown', (e) => {
     </tr>
     
   </table>
-    </div>
-  `;
+    </div>`;
 });
-
 
 ```
 
@@ -215,34 +212,35 @@ window.addEventListener('keydown', (e) => {
 
 ```javascript
 //generate a random color
-
 const randomColor = function () {
-  const hex = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += hex[Math.floor(Math.random() * 16)];
-  }
-  return color;
+	const hex = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		const randomIndex = Math.floor(Math.random() * 16);
+		color += hex[randomIndex];
+	}
+	console.log(color);
+	return color;
 };
 
 let intervalId;
-const startChangingColor = function () {
-  if (!intervalId) {
-    intervalId = setInterval(changeBgColor, 1000);
-  }
-
-  function changeBgColor() {
-    document.body.style.backgroundColor = randomColor();
-  }
-};
-const stopChangingColor = function () {
-  clearInterval(intervalId);
-  intervalId = null;
+const startColorChangeInterval = function () {
+	if (!intervalId) {
+		intervalId = setInterval(() => {
+			const color = randomColor();
+			document.querySelector('body').style.backgroundColor = color;
+		}, 1000);
+		console.log(intervalId);
+	}
 };
 
-document.querySelector('#start').addEventListener('click', startChangingColor);
+document
+	.querySelector('#start')
+	.addEventListener('click', startColorChangeInterval);
 
-document.querySelector('#stop').addEventListener('click', stopChangingColor);
-
+document.querySelector('#stop').addEventListener('click', () => {
+	clearInterval(intervalId);
+	intervalId = null;
+});
 
 ```
