@@ -494,3 +494,23 @@ Understanding childNodes is important for comprehending how front-end frameworks
 - In case of async task like `fetch` it uses `promise`.
 - All the `results/calbacks` from the resolved `promise` is sent to another queue called as the `microtask/priority queue`.
 - This `microtask/priority queue` has a higher priority over the `callback(task) queue` and the `Event-loop` pick the item in `microtask/priority queue` on priority.<br/>This potentially leads to faster execution of `promise resolutions`
+
+# API
+- `Application Programming Interface (API)` is like a communication medium between 2 entities like between backend and frontend, or between two different systems
+- They facilitate communication even if the systems are written in `different` programming languages
+- `API Response Structure`: It is often in `JSON format`.<br/>Tools like JSON formatters (e.g., jsonformatter.org) help in reading and understanding the structure of `JSON data`. 
+- `XMLHttpRequest`: The legacy method of making `API` request from JS was using the `XMLHttpRequest` object.
+    - This is an older approach but still functional.
+    - The steps involved in using 'XMLHttpRequest` are as follows.
+        - Creating an `XMLHttpRequest` object: `const xhr = new XMLHttpRequest()`;
+        - Opening the request: `xhr.open()` - This is used to specify the methond(GET/POST) and the URL of API-endpoint.
+        - Sending the request: `xhr.send()` This method actually `initiates` the HTTP request
+        - Request states: The `readyState` of the `XMLHttpRequest` object indicated the current state of the reqest.<br/>There are five states<br/>
+        0: request not initialised<br/>
+        1: server connection established<br/>
+        2: request received<br/>
+        3: processing request<br/>
+        4: request finished and response is ready.
+    - Handling state changes: Using the `onreadystatechange` event handler, which gets executed each time the `readyState` changes.
+    - Accessing the response: When the `readyState` reaches 4 (operation complete), the `responseText or response` property of the `XMLHttpRequest` object contains the data received from the server.
+    - Parsing the JSON response: The `responseText` is typically a string(JSON string), so it needs to be converted into a JavaScript object using JSON.parse().

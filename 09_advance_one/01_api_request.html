@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | API</title>
+</head>
+
+<body style="background-color: #414141; color: #fff;">
+    <!-- 0 - UNSENT Client has been created. open() not called yet.<br />
+    1 - OPENED open() has been called.<br />
+    2 - HEADERS_RECEIVED send() has been called, and headers and status are available.<br />
+    3 - LOADING Downloading; responseText holds partial data.<br />
+    4 - DONE The operation is complete. <br /> -->
+
+    <div>
+        <button id="getBtn">Get GitHub Profile</button>
+    </div>
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    const getBtn = document.querySelector('#getBtn');
+
+    const constructProfileCard = (profileData) => {
+        console.log(profileData);
+        const imgSrc = profileData.avatar_url;
+        const name = profileData.name;
+        const public_repos = profileData.public_repos;
+        const followers = profileData.followers;
+
+        const divElem = document.createElement('div');
+        divElem.setAttribute('class', 'card-container');
+        divElem.style = 'display: flex;justify-content: space-between;width: fit-content;align-items: center;padding: 10px;gap: 10px;border: 1px solid;border-radius: 5px;';
+
+        const imgElem = document.createElement('img');
+        imgElem.setAttribute('src', imgSrc);
+        imgElem.style = 'height: 75px; border-radius: 50%'
+
+        const divElem_2 = document.createElement('div');
+        divElem_2.style = 'display: flex; flex-direction: column';
+
+        const spanElem_name = document.createElement('span');
+        const spanElem_repos = document.createElement('span');
+        const spanElem_followers = document.createElement('span');
+
+        spanElem_name.innerText = `Name: ${name}`;
+        spanElem_repos.innerText = `Public Repos: ${public_repos}`;
+        spanElem_followers.innerText = `Followers: ${followers}`;
+
+        divElem_2.append(spanElem_name);
+        divElem_2.append(spanElem_repos);
+        divElem_2.append(spanElem_followers);
+
+
+        divElem.append(imgElem)
+        divElem.append(divElem_2)
+        document.querySelector('body').append(divElem)
+    }
+
+    const fetchProfileData = () => {
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (e) {
+            // console.log(`e.currentTarget.readyState: ${e.currentTarget.readyState}`)
+            // console.log(`xhr.readyState: ${xhr.readyState}`);
+
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText)
+                // console.log(data)
+                constructProfileCard(data);
+            }
+        }
+
+        xhr.open('GET', requestUrl);
+        xhr.send();
+    }
+
+    getBtn.addEventListener('click', fetchProfileData)
+
+
+
+</script>
+
+</html>
