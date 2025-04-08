@@ -565,3 +565,77 @@ One part is for managing the Promise state(`onFulfilled` and `onRejected` arrays
     - The `onFulfilled`(for `resolve` callbacks) and `onRejected`(for `reject` callbacks) arrays are private and not directly accessible.
     - There is a `data-placeholder` in the memory which is initially empty. This gets filled with the data from either `onFulfilled` or `onRejected` array.
     - When you get a response(resData) in the `.then((resData)=> {})` block, you are essentially accessing the `data` that has been populated in the `data-placeholder` in the memory.
+
+# JS Classes and OOP
+- In JS, there are classes, but under the hood its built on top of JS's existing prototype system
+- JS primarily is a `prototype-based` language. The concept/keyword of `class` in JS are essentially a `syntactic-sugar` over the existing `prototype-based inheritance` mechanism of JS.
+- `Object-Oriented Programming (OOP)`: `OOP` is basically defined as a programming paradigm/style that structures code in a particular way.
+- `Objects` are basically a simple collection of properties and methods (variables/const and functions).
+- The concept of `OOP` and `class` was introduced in JS to address the issue of messy and non-reusable code(spaghetti code)<br/>This also enables the utilizations of concepts and features from other languages like creating and injecting service.
+- Some of the key concepts of OOP with JS are
+    - `Object Literals`: The most basic and direct way of creating a object(literally) in JS is by using the curly braces {}.
+    - `Constructor Functions`: These are esentially function, and with the help of the `new` keyword, you can create multiple instances of the object with similar properties and methods
+    - `Prototypes/Proto`: This is the core mechanism of JS, which even enables the class/object like behaviour and functionality in JS.
+    - `Instances and the new Keyword`: An instance is a specific object created from a constructor function. The new keyword is crucial for creating these instances
+
+- The 4 Pillars (Fundamental Concepts) of OPP are
+    - `Abstraction`: Showing only the essential details to the user and hiding the complex implementation details.
+    - `Encapsulation`: Encapsulation bundles `data (attributes)` and `methods (functions)` that operate on that data into a single unit, called a `class`.<br/>It also involves controlling access to the data.
+    - `Inheritance`: The mechanism by which one object can acquire the properties and methods of another object.
+    - `Polymorphism`: The ability of an object or method to take on many forms or have multiple functionalities
+
+``` javascript
+const user = {
+	name: "Light yagami",
+	alias: "Kira",
+	killCount: 5838,
+	isShinigami: false,
+
+	greeting: function () {
+		return `Hi, I am ${this.alias}`;
+	},
+};
+```
+- Here is an example of an `Object Literal`
+    - you can access the properties and methods by using both dot notation (.) and bracket notation ([])
+- The `this` Keyword: `this` refers to the current execution context.<br/>
+`this` allows a method within an object to access the object's own properties (look at the above example).
+    - In an object, `this` referes to the object itself.<br/>
+    In a global context, `this` referes to` window object` in `browser` and g`lobal-obj` in `node.js`
+- With `object-literals`, when you have to create the `multiple` objects of the `same` structure with `different` values, you basically have to write `repetitive code`.<br/>
+This becomes highly `inefficient`
+
+- `Constructor Function & new keyword`
+    - `Constructor functions` are introduced as a solution to the repetition problem.<br/>The `new keyword` is essential when using `constructor functions`
+    - The primary purpose of using the `new` and `constructor-fun` is to create `multiple-independent instances` of an `object`.<br/>
+    This prevents the data of one object being accidentally over-written by other
+
+``` javascript
+function User(name, killCount, isShinigami) {
+	this.name = name;
+	this.killCount = killCount;
+	this.isShinigami = isShinigami;
+
+	this.greeting = function () {
+		return `Hi, I am ${this.name}`;
+	};
+}
+
+const user1 = new User("LightYagami", 7932, false);
+const user2 = new User("Ryuk", 347932, true);
+```
+- In the above code-snippet example, a custom `User Constructor-fun` is created.<br/>
+It takes in `name`, `killCountand` and `isShinigami` as parameters.<br/>
+By using `this`, the values of the params are assigned to the object's properties
+- By using the `new` keyword, a `new instance` of the `User-object` is created<br/>
+`const user1 = new User("LightYagami", 7932, false);`
+- You can also define methods within constructor functions using `this`<br/>`this.greeting = function() { ... }`
+- Even `without` an `explicit return` in the `constructor-function`, the newly created object is `implicitly returned`.
+- While creating an object with a `constructor-function` and `new` kayword, it goes through a 4-step process
+    1. An empty object is created
+    2. The `constructor` function is called
+    3. The arguments are bound to `this` keyword.
+    4. The `new object` is returned
+
+- The `.constructor` property: Every object in JS has a `.constructor` property. This points back to the function that created it. For ex. `user1.constructor` will point to the `User function`
+- To check if the object is an `instance` of a particular `constructor`, you can use the `instanceOf operator`
