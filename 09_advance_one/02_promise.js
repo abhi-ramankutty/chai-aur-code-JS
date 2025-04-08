@@ -98,3 +98,5 @@ fetch("https://jsonplaceholder.typicode.com/users")
 	.catch((err) => {
 		console.log(`fetch err: ${err}`);
 	});
+
+fetch()

@@ -552,3 +552,16 @@ async function getAllUsers() {
 	}
 }
 ```
+
+# Fetch-API
+- `fetch()` is a global method (of browser window / node env) that starts the process of fetching a resource over the network and returns a `Promise`
+- The `fetch()` promise `resolves` to the `Response object` representing the `response` to your `request`.
+- A `fetch()` `promise` only `rejects` when the request `fails`, for example, because of a badly-formed request URL or a network error.<br/>It is crucial to note that `HTTP-error` status like `404`, `504` etc are received as a `resolved` promise and <b>NOT</b> as a `rejected` promise.
+- A `rejected` promise in `fetch()` typically indicates that the request call itself was met with failure.
+- `fetch(inputURL, RequestInit?)`: By using the `RequestInit` parameter, you can add additional info like headers, method, requestBody etc.
+- One important point to remember is that all the `resolved` `promises`(including those from `fetch`) are put into a special queue called the `MicroTask Queue / Priority Queue`.<br/>The items in this has a `HIGHER` priority for `execution` over the regular task-queue items.
+- Internally, `fetch()` execution takes place in a 2-step process.<br/>
+One part is for managing the Promise state(`onFulfilled` and `onRejected` arrays) in memory and the other is to handle the `network-call` requests (by browser / nodejs env)
+    - The `onFulfilled`(for `resolve` callbacks) and `onRejected`(for `reject` callbacks) arrays are private and not directly accessible.
+    - There is a `data-placeholder` in the memory which is initially empty. This gets filled with the data from either `onFulfilled` or `onRejected` array.
+    - When you get a response(resData) in the `.then((resData)=> {})` block, you are essentially accessing the `data` that has been populated in the `data-placeholder` in the memory.
