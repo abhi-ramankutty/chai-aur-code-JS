@@ -514,3 +514,41 @@ Understanding childNodes is important for comprehending how front-end frameworks
     - Handling state changes: Using the `onreadystatechange` event handler, which gets executed each time the `readyState` changes.
     - Accessing the response: When the `readyState` reaches 4 (operation complete), the `responseText or response` property of the `XMLHttpRequest` object contains the data received from the server.
     - Parsing the JSON response: The `responseText` is typically a string(JSON string), so it needs to be converted into a JavaScript object using JSON.parse().
+
+# JS Promise
+- `Promises` in JS represent the eventual completion (successful or failure) of an `asynchronous` operation and its `resulting value`.
+- `Promises` are used for operations that don't complete immediately, such as network requests, file access, database calls, and cryptographic operations etc.
+- There are 3 state in `Promise`
+    - `Pending`: The initial state, neither `fulfilled` nor `rejected`
+    - `Fulfilled`: The operation completed successfully
+    - `Rejected`: The operation failed
+- `Promises` are `objects` in JavaScript
+- A new Promise is created using `new Promise()`. This takes a `callback-fun` as an `argument`.
+- The callback-fun has two parameters: `resolve` and `reject`. These parameters are a function in itself
+    - `resolve`: `resolve(value)` is called to indicate that the `async` operation was `successful`. You can also pass `data/value` in the `resolve()` function 
+    - `reject`: `reject(reason)` is called to indicate that the `async` operation `failed`. And you ususlly pass a `reason(like error msg)` in the `reject()` function
+- Promises are consumed using the `.then()`, `.catch()`, and `.finally()` methods.
+    - `then(onFulfilled)`: When the promise is `resolved`, the callback `onFulfilled` in `then` is triggered/executed<br/>This callback receives the `value` that is passed by the `resolve()` function.<br/> `.then()` can be chained and the value returned from one `.then()` is passed to the next `.then()`
+    - `catch(onRejected)`: When the promise is `rejected`, the callback `onRejected` in `catch` is triggered/executed.<br/>This callback receives the `reason` that is passed in the `reject()` function
+    - `finally(onFinally)`: Irrespective of whether the `promise` is `resolved` or `rejected`, the `onFinally` callback in `finally` is executed 
+- Promises can also be consumed using the `async-await` syntax. This is a more modern appraoach.
+- `acync function` is declared using the `async` keyword, and it implicitly returns a `Promise`<br/>e.g. `async function newFun() {}`
+- The `await` keyword is used inside the `async function`, which will `pause` the execution until the `promise` settles (either `resolves` or `rejected`)<br/>The `await` keyword precedes a `Promise`.
+- `const result = await fetch('https://some-url')`<br/>
+In the above `await-expression`, the `resolved` value of the `promise` is `returned` and store in the variable `result`.
+- Errors in `async-await` code are handled using the `try-catch-block`.<br/>If a `promise` is `rejected` after being awaited in an `await-expression`, it will `throw` and `error` which can be caught in the `catch-block`.
+- The `fetch()` API is a built-in JS function used to make network-calls. `fetch()` returns a `Promise` that is `resolved` to get the `response` from the request.
+- The response from `fetch()` often needs to be parsed. For `JSON` responses, the `.json()` method is used on the response-object.<br/>This `.json()` also returns a `Promise` that resolves to the `JSON` data. Hence the `.json()` should also be awaited.<br/>
+```
+async-await example:
+
+async function getAllUsers() {
+	try {
+		const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await response.json()
+		console.log(data);
+	} catch (error) {
+		console.log(`getAllUsers-Error: ${error}`);
+	}
+}
+```
