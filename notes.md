@@ -639,3 +639,38 @@ By using `this`, the values of the params are assigned to the object's propertie
 
 - The `.constructor` property: Every object in JS has a `.constructor` property. This points back to the function that created it. For ex. `user1.constructor` will point to the `User function`
 - To check if the object is an `instance` of a particular `constructor`, you can use the `instanceOf operator`
+
+# Call, Bind & Apply
+- These are the 3 JS methods used to control the `execution context` of a function, specifically the value of `this` inside that function
+
+## Call
+- Understanding the `call` method requires you to have a basic understanding of JS's execution-context.
+- `Execution-Context(EC) Recap`
+    - JS's EC has 2 main parts. Call-Stack and Memory(Heap)
+    - Call-Stack is to manage the execution of functions.
+    - A global-EC is always present (like at the base)
+    - When a function is called, a new function-EC is created and added on top of the Call-Stack for execution<br/>Each function-EC again has it own Call-Stack and Memory(Heap)
+- The `this` keyword in a `function` referes to the `current execution context`
+- When you have a `function` inside another `function`, the `this` within the `inner-function` does not automatically refer to the `outer-function's` execution-context.<br/>It points to the `global-EC`
+``` javascript
+function setUserName(userName) {
+    this.userName = userName;
+}
+
+function createUser(userName, email, password){
+    setUserName(userName)
+    this.email = email;
+    this.password = password;
+}
+```
+- in the above example, the `this` of `setUserName` points to the `global-EC` and not to the EC of `createUser`
+- The global `this` referes to the `window-object` in the `browser` and an `empty-object` in `Node.js` env
+- Simply calling the `inner-function (setUsername)` from within the `outer-function (createUser)` only executes `setUsername` within its own execution context.<br/>Any changes to `this` inside `setUsername` are local to its context and are lost when that context is removed from the `call-stack`
+
+- JS provides `.call()` method to explicitly control the value of `this` when a function is executed.
+- Thes `.call()` method allows you to call/invoke the function with a specific value of `this` and the individual arguments are passed directly
+- `.call()` Syntax: `functionName.call(thisArg, arg1, arg2, ...)`
+    - The first argument `thisArg` becomes the `this` value inside `functionName` when it is executed.
+    - The subsequent arguments `arg1, arg2, ...` are passed as parameters to `functionName`
+- In the above code-snippet, by using `setUserName.call(this, userName)`, the `setUserName` function is executed with the context of `createUser` function's `this`.<br/>This allows the `setUserName` to correctly set the `this.userName` property to `createUser`'s obj
+- `Key Use Case`: The primary purpose of `.call()` is to borrow the methods and execute them within the context of a different object.<br/>This allows the manupilation of the object(calling object like createUser) properties using the borrwed method.
