@@ -640,6 +640,28 @@ By using `this`, the values of the params are assigned to the object's propertie
 - The `.constructor` property: Every object in JS has a `.constructor` property. This points back to the function that created it. For ex. `user1.constructor` will point to the `User function`
 - To check if the object is an `instance` of a particular `constructor`, you can use the `instanceOf operator`
 
+## Class
+- Like already discussed, `class` is JS is a syntactical-sugar over the existing prototype-based inheritance
+- A `class` is declared using the class keyword, followed by the `class-name` and `curly-braces`
+- Insude the curly-braces of the class, you can define your propertirs and methods
+- `constructor` is a special method within a class. This is automatically called when an `instance` of the `class` (new object) is created while using the `new` keyword
+- `constructor` is used to initialise object properties, often by taking arguments.
+- Within the constructor and other methods of the class, the `this` keyword referes to the current instance of the class.
+- Methods are defined directly within the class body without the need for the `function` keyword
+
+## Inheritance
+- In JS, `inheritance` is achieved by using the `extends` keyword.<br/>A `child-class` can extend a `parent-class`, and inherits its properties and methods.
+- `super()`: `super()` keyword is used in the `constructor` of a `child-class` to call the constructor of the `parent-class`.<br/>This is necessary to initialize the properties of the inherited class
+- When a `child` extends a `parent-class`, `instances` of the `child` can access the properties and methods of the `parent-class`.<br/>You can override the functionalities of the method from the parent class by defining a method with the same name in the `child-class`
+- The instanceof operator can be used to check if an object is an instance of a particular class (or its parent classes).
+
+## Static
+- Static properties and methods are defined using the `static` keyword within a class.
+- Static members belong to the `class` itself, `NOT` to any specific `instance` of the class.
+- Static methods are typically used for utility functions or functionalities that are related to the class but don't need access to instance-specific data.
+- Static methods `cannot` be directly accessed on instances of the class. They must be called `directly` on the `class` itself.
+- `Inheritance` affects static members in that<br/>`child-classes` can inherit `static members` from `parent-classes`, but `static methods` in a `parent-class` do not automatically have access to this referring to the instance of a `child-class`
+
 # Call, Bind & Apply
 - These are the 3 JS methods used to control the `execution context` of a function, specifically the value of `this` inside that function
 
@@ -674,3 +696,4 @@ function createUser(userName, email, password){
     - The subsequent arguments `arg1, arg2, ...` are passed as parameters to `functionName`
 - In the above code-snippet, by using `setUserName.call(this, userName)`, the `setUserName` function is executed with the context of `createUser` function's `this`.<br/>This allows the `setUserName` to correctly set the `this.userName` property to `createUser`'s obj
 - `Key Use Case`: The primary purpose of `.call()` is to borrow the methods and execute them within the context of a different object.<br/>This allows the manupilation of the object(calling object like createUser) properties using the borrwed method.
+
