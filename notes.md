@@ -697,3 +697,55 @@ function createUser(userName, email, password){
 - In the above code-snippet, by using `setUserName.call(this, userName)`, the `setUserName` function is executed with the context of `createUser` function's `this`.<br/>This allows the `setUserName` to correctly set the `this.userName` property to `createUser`'s obj
 - `Key Use Case`: The primary purpose of `.call()` is to borrow the methods and execute them within the context of a different object.<br/>This allows the manupilation of the object(calling object like createUser) properties using the borrwed method.
 
+## Bind
+- The `.bind()` method in JS is a fundamental tool for managing the `this` of functions. <br/>And for creating partially applied functions.<br/>`.bind()` do `NOT` trigger the function immediately, rather `returns` a `new-function` with `pre-set values/context`.
+- The primary role of `.bind()` is to `create` a `new-function` where the value of `this(context)` is permanently set to a specifuc value.<br/>This is especially useful when dealing with `this` in call-backs, event-handlers etc where the original-context of `this` is lost
+- `.bind()` also allows you to pre-set arguments for a function, effectively creating a `new function` with some of its arguments already `filled in`.
+- `.bind()` does not immediately execute the original function. Instead, it returns a `new-function` (a bound function)
+- The first argument you provide to `.bind()` becomes the `this` value within the bound-function's execution context
+- Any subsequent arguments passed to `.bind()`, are pre-set as agruments for the new `bound-function`.
+- When you eventually call the bound-function, it executes the original function using the bound this value(and any pre-set arguments) followed by any additional arguments you provide at the time of call(execution)
+### Key Points
+1. `.bind()` returns a new function; it does not execute the original function immediately.
+2. The bound this value is permanent and cannot be changed later.
+3. Partial application allows you to create more specialized functions from more general ones
+
+```javascript
+/** Example 1 */
+class ReactApp {
+    constructor() {
+        this.library = 'React';
+        this.server = 'http://localhost:3000';
+        document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+    }
+
+    handleClick() {
+        console.log('handleClick Triggered', this)
+    }
+}
+
+/** Example 2 */
+const person = {
+  name: "Alice",
+  greet: function () {
+    console.log(`Hello, my name is ${this.name}`);
+  },
+};
+
+const greetFunc = person.greet.bind(person);
+greetFunc(); // Output: Hello, my name is Alice
+
+const unboundGreet = person.greet;
+unboundGreet(); // Output: Hello, my name is undefined (or error in strict mode)
+
+
+/** Example 3 */
+function multiply(a, b) {
+  return a * b;
+}
+
+const double = multiply.bind(null, 2); // Pre-fill the first argument with 2
+console.log(double(5)); // Output: 10 (2 * 5)
+const triple = multiply.bind(null, 3);
+console.log(triple(6)); // output: 18 (3*6)
+```
