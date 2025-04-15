@@ -749,3 +749,16 @@ console.log(double(5)); // Output: 10 (2 * 5)
 const triple = multiply.bind(null, 3);
 console.log(triple(6)); // output: 18 (3*6)
 ```
+
+# Objects - Miscellaneous | Configurations
+- JS allows direct access to the `properties` within an `object`.
+- Objects inherit properties and also have their own built-in properties like `constructor`, `hasOwnProperty`, `isPrototypeOf`, `toLocaleString`, `toString`, `defineProperty`, `getOwnPropertyDescriptor`, etc..
+- While some object `porperties` are directly visible, some `properties` might not be immediately apparent but can be revealed with deeper inspection.
+- `Object.getOwnPropertyDescriptor()`: This method is introduced as a way to get detailed information (a "description") about a specific property of an object.
+- By using `Object.getOwnPropertyDescriptor(Math, 'PI')`, you can see the `hardcoded-value` and the propetries `writable`, `enumerable` and `configurable` are all set to `false`.<br/>This is why you cannot directly change `Math.PI`
+- Once `configurable` is set to `false`, you cannot modifiy the properties hence-forth
+- JS allows the user to define and control attributes of their own object properties, such as whether they are `writable`, `enumerable`, and `configurable`.<br/> By default, properties added to an object are typically `writable: true`, `enumerable: true`, and `configurable: true`.
+- By using `Object.defineProperty()`, you can define/modify the attributes of a specific property on an object.
+- `writable` - Setting `writable: false` on a property prevents its value from being changed after it's defined, although it won't throw an error in strict mode in older JavaScript versions
+- `enumerable` - Setting `enumerable: false` prevents a property from being included in `for...in` loops and potentially other enumeration methods like Object.keys();
+- `configurable` - Setting `configurable: false` prevents the further defining/modification/configuration of the properties
