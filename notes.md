@@ -762,3 +762,22 @@ console.log(triple(6)); // output: 18 (3*6)
 - `writable` - Setting `writable: false` on a property prevents its value from being changed after it's defined, although it won't throw an error in strict mode in older JavaScript versions
 - `enumerable` - Setting `enumerable: false` prevents a property from being included in `for...in` loops and potentially other enumeration methods like Object.keys();
 - `configurable` - Setting `configurable: false` prevents the further defining/modification/configuration of the properties
+
+# Object | getter & setter
+- `Getters` and `Setters` are introduced to get a more fine-grained `control` on how `properties` of a `class/object` are` accessed(get)` and `modified(set)`
+- This is useful for scenarios like validating input, encrypting data before storage, or providing a controlled interface to internal data.
+- By default, every `properties` in a `class/object` has its own `getters` and `setters` with its default behaviour. These default behaviours can be over-ridden by defining custom `getters` and `setters`
+- `Getter Syntax`: A `Getter` is defined by using the `get` keyword followed by the `name` of the `property` for which you want to control access`(eg get password() {return 'passowrd'})`<br/>Even though its written like a `method` and behaves like a `method`, you can still access like a `property`.<br/>Every `Getter` must `return a value`.
+- `Getters` can implement custom logic when a property is accessed. It allows modifying or processing the value before it's returned.
+
+- `Setter Syntax`: A `Setter` is defined by using the `set` keyword followed by the `name` of the `property` and a parameter which will hold the value that is being assigned `(eg set password(value) {this._password = value})`<br/>It behaves like a method but is accessed like a property and must return a value.
+- `Setters` can implement custom logic when a property is assigned a value. For example, a Setter could validate the new password or encrypt it before storing it in the internal property.
+
+- `Getter and Setter Pairing Requirement:` If you define a `Getter` for a property, you must `also` define a `Setter` for the same property, `and vice versa`.<br/>Defining only one will lead to errors when attempting the other operation.
+- `Potential Conflicts (Call Stack Exceeded)`: Directly using the same name for both the G`etter/Setter` and the `internal property` within the `class` (especially in the constructor) can lead to an `infinite loop` and a `"Maximum call stack size exceeded" error`.<br/>This happens because the Setter might try to set the same property it's defined to control, causing it to call itself repeatedly.
+- A common solution to avoid these conflicts is to use a naming convention where the actual internal property is `prefixed` with an `underscore` `(e.g., _email, _password)`. The `Getter` and `Setter` then operate on this internal property
+- `Encapsulation and Controlled Access`: `Getters` and `Setters` provide a way to control how the internal state of an object is accessed and modified from the outside. This allows for better `encapsulation` and the ability to change the internal implementation without affecting the external interface.
+- Before the introduction of classes, `Getters` and `Setters` could be defined on objects using the `Object.defineProperty()` method. This involves specifying `get` and `set` as properties within the descriptor object passed to d`efineProperty()`.
+- `Getters` and `Setters` can also be directly defined within `JS object literals` using the `get` and `set` keywords before a `property name`
+- `Behind the Scenes` JS treats `Getters` and `Setters` as `special methods` that are invoked when you try to access or assign a value to the associated property. They effectively `override` the `default behaviour` of property access and assignment.
+- Regardless of the syntax used (`class, Object.defineProperty(), or object literal`), `Getters` and `Setters` fundamentally provide `control` over the "`getting`" of a value from memory and the "`setting`" (or leaving) of a value in memory for a specific property.
