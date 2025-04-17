@@ -781,3 +781,67 @@ console.log(triple(6)); // output: 18 (3*6)
 - `Getters` and `Setters` can also be directly defined within `JS object literals` using the `get` and `set` keywords before a `property name`
 - `Behind the Scenes` JS treats `Getters` and `Setters` as `special methods` that are invoked when you try to access or assign a value to the associated property. They effectively `override` the `default behaviour` of property access and assignment.
 - Regardless of the syntax used (`class, Object.defineProperty(), or object literal`), `Getters` and `Setters` fundamentally provide `control` over the "`getting`" of a value from memory and the "`setting`" (or leaving) of a value in memory for a specific property.
+
+# Lexical Scope & Closure
+
+## Lexical Scoping
+```javascript
+function outerFun() {
+    let username = 'Shinigami'
+    // console.log(`outerFun nickName: ${nickName}`); // nickName is not defined - parent cannot access child scope items
+    function innerFnOne() {
+        let nickName = 'Nick name... in funOne';
+        console.log(`innerFnOne name: ${username}`);
+    }
+    function innerFnTwo() {
+        console.log(`innerFnTwo name: ${username}`);
+        // console.log(`innerFnTwo nickName: ${nickName}`); // nickName is not defined - sibling cannot access items form the scope of its sibling
+    }
+    innerFnOne();
+    innerFnTwo();
+}
+outerFun();
+```
+- `Lexical scoping` refers to haw a function accesses variables based on where it is `declared` in the code (rather than where it is `executed`)
+- A function does not have access to variables declared outside of its own scope... `Unless` it's an `inner-function` accessing its `outer-function's` scope.<br/>When a function is declared inside another function, the `inner-function` has access to the `outer-function's` variables.
+- An `inner-function` can access variables declared in its `parent(outer)-function's` scope.
+- Multiple `inner-functions` within the same `outer-function` can access the `outer-function's variables`, but they do `NOT` automatically have access to each other's local variables.
+- `Analogy:` `children (inner functions)` can access things from `parents (outer functions)` and `grandparents (global scope)`, but `siblings (inner functions)` might not share everything with each other, and `parents` CANNOT access the personal belongings of their `children`
+
+## Closure
+- In one shot, a `closure` is a `function` that `returns` a `function` along with its `lexical-scope`.
+```javascript
+function makeFun(userNameInput) {
+    let userName = userNameInput;
+    let realName = 'Ryuk';
+    function displayName() {
+        console.log(userName, realName);
+    }
+    return displayName;
+}
+
+const makeFunItem = makeFun('Shinigami');
+console.log(makeFunItem())
+```
+- In the above example, `makeFun()` is a `function` with a `variable-username` and another `function` `displayName()` which logs the `userName` and `realName` variable present in the parent makeFun's scope
+- `makeFun()` function `returns` the function `displayName` itself (i.e. a reference to the function)
+- Even after the `makeFun()` function is executed and returned `displayName()` function, the `displayName()` function still retains access to the name variable from its outer-function `makeFun()`'s scope due to `closure` and `lexical scoping`
+- The returned function carries its entire `lexical scope` with it, not just the `function definition`. This ensures that it can still access the variables of its `outer-function`.
+
+```javascript
+document.querySelector('#orange').addEventListener('click', clickHandler('orange'))
+document.querySelector('#green').addEventListener('click', clickHandler('green'))
+
+function clickHandler(color) {
+    // document.body.style.backgroundColor = color
+    return function() {
+        document.body.style.backgroundColor = color
+    }
+}
+```
+- In the above example, everytime the `click` event is triggered on the element `#orange` and `#green`, the `clickHandler(color)` function is called.
+- `clickHandler(color)` is a generic function which takes the desired colour as an argument.
+- If directly assigned(like shown in the comment line in the above example) `clickHandler('orange')` to the onclick event, it will execute the function `immediately` and not when the button is `clicked`.
+- Alternatively, by defining and returning a `anonymous-function` within `clickHandler function` with the specific colour creates a closure.
+- Now when the `click` event is triggered, it has access to the `clickHandler function`(i.e.the returened `anonymous-function`) and also allows the passing of the specific color argument when its executed.
+- This demonstrates a real-world scenario where `closure` is used to create `reusable` `event handlers` that maintain access to `necessary variables (in this case, the colour)` even when the `outer context` might seem to have `finished executing`
